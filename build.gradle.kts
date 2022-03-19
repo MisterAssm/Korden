@@ -11,10 +11,25 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(Kotlin.stdlib.jdk8)
-}
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.name
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation(platform(Kotlin.stdlib.jdk8))
+        implementation(KotlinX.serialization.json)
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-module-name",
+                project.path.replace(":", ""),
+                "-Xopt-in=kotlin.RequiresOptIn",
+                "-Xjsr305=strict")
+            jvmTarget = JavaVersion.VERSION_1_8.name
+        }
+    }
 }
