@@ -21,6 +21,7 @@ subprojects {
     dependencies {
         implementation(platform(Kotlin.stdlib.jdk8))
         implementation(KotlinX.serialization.json)
+        implementation(KotlinX.coroutines.core)
     }
 
     tasks.withType<KotlinCompile> {
