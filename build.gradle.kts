@@ -30,7 +30,7 @@ subprojects {
                 project.path.replace(":", ""),
                 "-Xopt-in=kotlin.RequiresOptIn",
                 "-Xjsr305=strict")
-            jvmTarget = JavaVersion.VERSION_1_8.name
+            jvmTarget = JavaVersion.VERSION_1_8.toString()
         }
     }
 }
