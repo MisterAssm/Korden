@@ -1,6 +1,7 @@
 package fr.misterassm.korden.models.enums.intents
 
 import fr.misterassm.korden.adapters.PrivilegedIntentsAdapter
+import fr.misterassm.korden.factories.IntentFactory.shiftLeftTransformer
 
 enum class PrivilegedIntents(private val shiftCount: Int) : PrivilegedIntentsAdapter {
 
@@ -9,6 +10,8 @@ enum class PrivilegedIntents(private val shiftCount: Int) : PrivilegedIntentsAda
     MESSAGE_CONTENT(15),
     ;
 
-    override fun getIdentifier() = formateShl(shiftCount)
+    override fun getIdentifier() = shiftLeftTransformer(shiftCount)
 
 }
+
+

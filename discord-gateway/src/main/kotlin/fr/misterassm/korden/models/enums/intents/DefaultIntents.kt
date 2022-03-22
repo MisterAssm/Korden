@@ -1,6 +1,7 @@
 package fr.misterassm.korden.models.enums.intents
 
 import fr.misterassm.korden.adapters.IntentsAdapter
+import fr.misterassm.korden.factories.IntentFactory.shiftLeftTransformer
 
 enum class DefaultIntents(private val shiftCount: Int) : IntentsAdapter {
 
@@ -20,6 +21,6 @@ enum class DefaultIntents(private val shiftCount: Int) : IntentsAdapter {
     GUILD_SCHEDULED_EVENTS(16),
     ;
 
-    override fun getIdentifier() = formateShl(shiftCount)
+    override fun getIdentifier() = shiftLeftTransformer(shiftCount)
 
 }
